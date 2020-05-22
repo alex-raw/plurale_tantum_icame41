@@ -1,0 +1,326 @@
+---
+title: "Linguistic category or linguist's category: <br> the case of English pluralia tantum"
+subtitle: "Alexander Rauhut, M.A."
+author: "Institute of English Philology <br> Free University of Berlin"
+
+output:
+  ioslides_presentation:
+    #incremental: true
+    slide_level: 2
+    runtime: shiny
+    widescreen: true
+    smaller: true
+    logo: img/ICAME41.png
+    link-citations: yes
+    css: styles/fu_presentation.css
+    citation_package: biblatex
+    #bibliography: [src/packages.bib, src/uni.bib]
+    highlight: tango
+    includes:
+      in_header: styles/fu_presentation.html
+
+bibliography: "src/uni.bib"
+csl: src/unified.csl
+---
+
+``` {r import, echo = FALSE}
+library(knitr)
+library(magrittr)
+library(kableExtra)
+library(zipfR)
+load("data.RData")
+```
+
+## About
+
+Alexander Rauhut
+
+- Research assistant @ Freie Universität Berlin
+- https://alexraw.xyz
+- https://github.com/alex-raw
+- alexander.rauhut@fu-berlin.de
+
+# Overview
+
+1. Background
+2. Plurale tantum vs uncountable noun
+3. Case study: *(a) pair(s) of*
+
+## Background
+
+- Prototype theory & word classes
+- Do grammatical categories produce lexical clusters?
+- Can we find discretization effects?
+- When is a correlation strong enough to be meaningful?
+
+<div class='notes'>
+If we have a strong grammatical category, we see extreme lexical clusters. In fact, so extreme, that it took some time too figure out that there is something like a verb-noun continuum.
+In a different project I tried to look at gerunds from a continuum perspectives and came to the realization that the uncanny valley between verbs and nouns is very thinly populated.
+</div>
+
+**Expectations**:
+
+- conceptually motivated generalizations produce lexical clusters\
+by reinforcement
+
+## Plurale and singulare tantum {.build}
+
+Notes on terminology in this presentation:
+
+***singulare/plurale tantum***
+
+- here: in a narrow sense lemma with sg/pl frequency close to 0
+
+***mass noun***
+
+- if not stated otherwise:\
+singular uncountable nouns with quantity semantics
+
+***uncountable noun***
+
+- mass nouns + proper names + abstract nouns not found in plural
+
+Note: collective (singular form with plural agreement) are not regarded here
+
+<!-- @croft01, @booij10 -->
+
+## Examples
+
+<div style="width: 100%;">
+
+<div style="width: 45%; float: left;">
+
+``` {r singulare, echo = FALSE}
+fig_plurale_tb %>%
+  kable(caption = "Plurale tantum") %>%
+  kable_styling(full_width = TRUE)
+```
+
+<br>
+
+<div style="width: 80%; float: right;">
+dp < .99\
+pl > 97%
+</div>
+
+</div>
+
+<div style="width: 45%; float: right;">
+
+``` {r plurale, echo = FALSE}
+fig_singulare_tb %>%
+  kable(caption = "Singulare tantum")
+```
+
+<br>
+
+<div style="width: 20%; float: left;">
+dp < .99\
+sg > 97%
+</div>
+
+</div>
+
+
+## *Plurale tantum*: A grammatical category?
+
+- Pluralia tantum and mass nouns seem arbitrarily distributed\
+between and within multiple lexical fields [@wisniewski10]
+
+- Pluralia tantum seem arbitrarily spread cross-linguistically [cf. @alexiadou19]:
+
+-  There are some attempts to find a conceptual basis\
+for both mass nouns and pluralia tantum [e.g @wisniewski10]
+
+# Data
+
+1. Overview
+2. Lexeme density
+3. Productivity
+
+## The data
+
+Indicators:
+
+- frequency and dispersion (dp, @gries08)
+  - salience
+  - noise filter
+- association
+  - association scores from a log-likelihood test
+  - expected frequencies
+- productivity
+  - hapax token ratio (P)
+  - vocabulary growth curves [@zipfr]
+
+Data from COCA [@coca]
+
+
+## Feature space
+
+|                        | uncountable           | countable         | neutral         |
+| ---                    | ---                   | ---               | ---             |
+| morphological          | ---                   | pl                | 's              |
+| morphosyntactic        | *much, little* …      | indef determiners | def determiner  |
+|                        | *some, enough, any* … |                   |                 |
+| constructional/lexical | a(n) x of N_sg …        | numeral modifier  | attributive use |
+
+<div class='notes'>
+Of course, this matrix is far from exhaustive, and if the aim were to identify which nouns tend to be count or mass nouns, it could be laid out in much more detail. However, the aim here is to see whether the distinction between the categories already crystallizes on a low formal level.
+</div>
+
+## Lexeme Density (interactive)
+
+<!-- euiaee -->
+
+## Challenges
+
+- Strong zero inflation in corpus data
+- Makes it hard to quantify the absence of a marker
+- any cut off is arbitrary
+
+<div style="width: 100%;">
+
+<div style="width: 45%; float: left;">
+
+```{r random, echo=FALSE, fig.cap = "COCA pl/sg ratio, raw density"}
+knitr::include_graphics("data/random.jpg")
+```
+
+</div>
+<div style="width: 45%; float: right;">
+
+```{r coca, echo=FALSE, fig.cap = "COCA pl/sg ratio, raw density"}
+knitr::include_graphics("data/raw_density_cropped.jpg")
+```
+
+</div>
+
+</div>
+
+# Productivity
+
+## Conversion
+
+- Any **count noun** can be made a **mass noun** or proper name
+
+(@) I tasted a hint of wet cat in my drink
+(@) A pet fish called "Dinner"
+
+(https://pethelpful.com/fish-aquariums/funny-fish-names)
+
+<br>
+
+- not applicable vice versa
+- Hard to conceive for plurale tantum
+- if so, very restricted, anecdotal
+- marginally productive or obsolete patterns from other word classes
+  - gerund plurale tantum, V*ings*
+  - ??the what's-lefts, those aren't greens anymore rather browns
+  - ??a pair of V-(o|e)rs
+
+<div class='notes'>
+The most frequently considered modifiers of pluralia tantum are less productive.
+It is an apple-pears comparison.
+</div>
+
+---
+
+```{r some, echo = FALSE}
+plot(fig_some_sg, fig_some_pl, legend = c("SOME + sg", "SOME + pl"))
+```
+
+## Productivity
+
+```{r pair_lot, echo = FALSE}
+plot(fig_pair, fig_lot, fig_piece, legend = c("pair of", "lot of", "piece of"))
+```
+
+# Case Study: (a) pair(s) of x
+
+## Collexeme analysis
+
+```{r collex1, echo = FALSE, fig.height = 5.4}
+fig_collex
+```
+
+---
+
+```{r collex2, echo = FALSE, fig.height = 6}
+fig_collex_col
+```
+
+<div class='notes'>
+Semantic fields at the top of the ranking
+can also be quanfified
+cline from scissors - pants - glasses - bodyparts
+
+paired objects and plurale tantum direct neighbors
+no break in continuity
+at some point we just
+</div>
+
+# Proportions
+
+<!-- ```{r pair1, echo = FALSE, out.width = "90%", out.height = "90%", fig.retina = 1} -->
+<!-- fig_pair_plain -->
+<!-- ``` -->
+
+<!-- --- -->
+
+<!-- ```{r pair2, echo = FALSE, out.width = "90%", out.height = "90%", fig.retina = 2} -->
+<!-- fig_pair_col -->
+<!-- ``` -->
+
+<!-- --- -->
+
+<!-- ```{r pair3, echo = FALSE, out.width = "90%", out.height = "90%", fig.retina = 3} -->
+<!-- fig_pair_cline -->
+<!-- ``` -->
+
+<!-- --- -->
+
+<!-- ```{r pair4, echo = FALSE, out.width = "90%", out.height = "90%", fig.retina = .5} -->
+<!-- fig_pair_field -->
+<!-- ``` -->
+
+# Conclusion
+
+## Conclusion
+
+- lexico-grammatical phenomena
+- grammatical continuum
+- semantic basis of grammatical categories
+
+**mass nouns**
+
+- slight discretization effects for mass nouns already on morpho-syntactic level
+- clearly distinct on lexical/construction level
+
+**pluralia tantum**
+
+- grammatical properties alone not enough to justify categorical status
+- continuum, hardly any discretization effects
+- not defined along morpho-syntactic criteria
+
+<div class='notes'>
+Hypothesis: language is bound to have some words that are rare enough in the plural and frequent enough overall to become lexicalized as plurale tantum.
+Highly salient types might serve as a model for analogical networks to emerge.
+</div>
+
+## References
+
+
+
+
+
+<!-- ## Approach -->
+<!-- - centered around lemma and type frequencies -->
+<!-- - morphological marker: plural ratios as base for comparison -->
+<!-- - filtered types with x% of np tags -->
+<!-- - carefully filter, avoid creating patterns -->
+
+<!-- ## Exploration -->
+<!-- The OED lists at least some examples of both singular *scissor* or plural with singular agreement *a scissors*. [^scissors] -->
+<!-- Singular form in attributive use -->
+<!-- [^scissors]: scissors, n. and int. *OED Online*, Oxford University Press, March 2020, www.oed.com/view/Entry/172777. Accessed 8 May 2020. -->
+<!-- No scissor nor razor has ever touched -->
